@@ -24,3 +24,6 @@
 - The specific game page has details about the game.
 
         User Login -> User Home -> View Game
+
+
+![User Login image](./img/navigation_outline.jpg)

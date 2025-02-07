@@ -21,9 +21,15 @@ The pages that are going to be there are:
 - Users can create an account with email and password, then log in to access their profiles.
 
 
+![User Login image](./img/user_login.jpg)
+
+![User Register image](./img/user_reg.jpg)
+
 ### Admin Login 
 
 -  A separate admin panel for managing users, games, and updates.
+
+![Admin Login image](./img/admin_login.jpg)
 
 
 ## Home page for Admin
@@ -31,6 +37,8 @@ The pages that are going to be there are:
 - It contains a Add game button which redirect to the next page.
 
 - It also has the history of what are the games have been added in the bast.
+
+![Admin Home image](./img/admin_home.jpg)
 
 
 ## Add game page
@@ -53,6 +61,8 @@ It contains the form which have some fields to add like :
 
 - Submit button to save the game. 
 
+![Add game image](./img/add_game.jpg)
+
 ## Home page for the user
 
 - This home page consist of a navbar which contains:
@@ -64,6 +74,8 @@ It contains the form which have some fields to add like :
   - Sort nav to sort the games in terms of publish or alphabatical.
 
 - The main page of the home page consist of list or grid of game icons used to view them.
+
+![User Home image](./img/user_home.jpg)
 
 
 ## Specific game info page
@@ -102,3 +114,5 @@ This page consist of the details about the game which we have chosen. Which cons
 - Standard price of the game.
  
          Rs.3599
+
+![Specific game image](./img/specific_page.jpg)
