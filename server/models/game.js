@@ -11,4 +11,17 @@ const admSchema = new mongoose.Schema({
   password: String,
 });
 const admModel = mongoose.model("Admin", admSchema);
-module.exports = { userModel, admModel };
+const gameSchema = new mongoose.Schema({
+  name: String,
+  date:Date,
+  details: String,
+  tags: [String],
+  images: [String], // Store Cloudinary URLs
+  minSpecs: String,
+  recSpecs: String,
+  purchaseLinks: [String],
+  price: String,
+});
+
+const Game = mongoose.model("Game", gameSchema);
+module.exports = { userModel, admModel, Game};

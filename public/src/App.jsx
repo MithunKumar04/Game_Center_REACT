@@ -6,6 +6,7 @@ import LoginU from './loginuser.jsx'
 import LoginA from './loginadmin.jsx'
 import HomeU from './userhome.jsx'
 import HomeA from './adminhome.jsx'
+import Addgame from './addgame.jsx'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/loginuser' element={<LoginU/>}></Route>
         <Route path='/homeuser/:name' element={<HomeU/>}></Route>
         <Route path='/homeadm/:name' element={<HomeA/>}></Route>
+        <Route path='/addgame' element={<Addgame/>}></Route>
       </Routes>
     </BrowserRouter>
   )
