@@ -36,7 +36,11 @@ function RegisterU() {
     if (validateForm(name, email, password)) {
       console.log(`${name}${email}${password}`);
       axios
-        .post("https://game-center-react.onrender.com/", { name, email, password })
+        .post("https://game-center-react.onrender.com/", {
+          name,
+          email,
+          password,
+        })
         .then((result) => {
           if (result.data === "User Aleady Exist") {
             toast.error("User already Exist.", toastOptions);
@@ -51,9 +55,15 @@ function RegisterU() {
 
   return (
     <>
-      <div className="d-flex h-screen w-screen justify-content-center align-items-center bg-cover bg-center vh-100" style={{ backgroundImage: "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')" }}>
-      <div className="bg-white p-3 rounded ">
-        <img src="/game_center.png" alt="image"  height={200} width={350} />
+      <div
+        className="d-flex h-screen w-screen justify-content-center align-items-center bg-cover bg-center vh-100"
+        style={{
+          backgroundImage:
+            "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')",
+        }}
+      >
+        <div className="bg-white p-3 rounded ">
+          <img src="/game_center.png" alt="image" height={200} width={350} />
           <h2>User Register</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">

@@ -27,7 +27,9 @@ export default function HomeA() {
         setTags(allTags);
 
         // Sort games by Recent Date (Descending) initially
-        setSortedGames([...data].sort((a, b) => new Date(b.date) - new Date(a.date)));
+        setSortedGames(
+          [...data].sort((a, b) => new Date(b.date) - new Date(a.date))
+        );
       })
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
@@ -53,7 +55,9 @@ export default function HomeA() {
       setFilteredResults([]);
     } else {
       setFilteredResults(
-        games.filter((game) => game.name.toLowerCase().includes(query.toLowerCase()))
+        games.filter((game) =>
+          game.name.toLowerCase().includes(query.toLowerCase())
+        )
       );
     }
   };
@@ -171,34 +175,42 @@ export default function HomeA() {
       </nav>
 
       {/* Main Content - Game Cards */}
-      <div className="d-flex h-screen w-screen  " style={{ backgroundImage: "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')" }}>
-      <div className="p-8 overflow-auto">
-        <h2 className="text-2xl font-bold mb-4">
-          {selectedTag ? `Games with Tag: ${selectedTag}` : "Available Games"}
-        </h2>
+      <div
+        className="d-flex h-screen w-screen  "
+        style={{
+          backgroundImage:
+            "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')",
+        }}
+      >
+        <div className="p-8 overflow-auto">
+          <h2 className="text-2xl font-bold mb-4">
+            {selectedTag ? `Games with Tag: ${selectedTag}` : "Available Games"}
+          </h2>
 
-        {/* Grid layout for game cards */}
-        <div className="grid grid-cols-3 gap-6">
-          {sortedGames.map((game) => (
-            <div
-              key={game._id}
-              className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition"
-              onClick={() => navigate(`/game/${game.name}`)}
-            >
-              {/* Game Image */}
-              <img
-                src={game.images.length > 0 ? game.images[0] : "/placeholder.jpg"} // Show first image or a placeholder
-                alt={game.name}
-                className="w-full h-70 object-cover rounded-md mb-2"
-              />
+          {/* Grid layout for game cards */}
+          <div className="grid grid-cols-3 gap-6">
+            {sortedGames.map((game) => (
+              <div
+                key={game._id}
+                className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition"
+                onClick={() => navigate(`/game/${game.name}`)}
+              >
+                {/* Game Image */}
+                <img
+                  src={
+                    game.images.length > 0 ? game.images[0] : "/placeholder.jpg"
+                  } // Show first image or a placeholder
+                  alt={game.name}
+                  className="w-full h-70 object-cover rounded-md mb-2"
+                />
 
-              {/* Game Name */}
-              <h3 className="text-lg font-semibold">{game.name}</h3>
-            </div>
-          ))}
+                {/* Game Name */}
+                <h3 className="text-lg font-semibold">{game.name}</h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

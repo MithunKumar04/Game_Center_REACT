@@ -32,7 +32,10 @@ function LoginU() {
     if (validateForm(email, password)) {
       console.log(`${email}${password}`);
       axios
-        .post("https://game-center-react.onrender.com/loginuser", { email, password })
+        .post("https://game-center-react.onrender.com/loginuser", {
+          email,
+          password,
+        })
         .then((result) => {
           console.log(result);
           if (result.data === "Incorrect password") {
@@ -50,9 +53,15 @@ function LoginU() {
 
   return (
     <>
-      <div className="d-flex h-screen w-screen justify-content-center align-items-center bg-cover bg-center vh-100" style={{ backgroundImage: "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')" }}>
-      <div className="bg-white p-3 rounded">
-        <img src="/game_center.png" alt="image"  height={200} width={350} />
+      <div
+        className="d-flex h-screen w-screen justify-content-center align-items-center bg-cover bg-center vh-100"
+        style={{
+          backgroundImage:
+            "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')",
+        }}
+      >
+        <div className="bg-white p-3 rounded">
+          <img src="/game_center.png" alt="image" height={200} width={350} />
           <h2>User Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">

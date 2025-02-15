@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 export default function Addgame() {
   const [game, setGame] = useState({
     name: "",
     details: "",
     tags: [],
-    images: [], // Now stores an array of image URLs
+    images: [],
     minSpecs: "",
     recSpecs: "",
     purchaseLinks: [],
@@ -15,10 +16,11 @@ export default function Addgame() {
 
   const [tag, setTag] = useState("");
   const [link, setLink] = useState("");
-  const [imageUrl, setImageUrl] = useState(""); // State for image URL input
+  const [imageUrl, setImageUrl] = useState("");
+
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 8000,
+    autoClose: 3000,
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
@@ -46,83 +48,195 @@ export default function Addgame() {
   const handleImageUrlAdd = () => {
     if (imageUrl) {
       setGame({ ...game, images: [...game.images, imageUrl] });
-      setImageUrl(""); // Clear input after adding
+      setImageUrl("");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://game-center-react.onrender.com/addgame", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(game),
-      });
+      const response = await fetch(
+        "https://game-center-react.onrender.com/addgame",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(game),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to add game");
       }
-      toast.error("Email and Password is required.", toastOptions);
-      history.back()
-      
-      console.log("Game added successfully!");
+      toast.success("Game added successfully!", toastOptions);
+      history.back();
     } catch (error) {
       console.error("Error submitting game:", error);
     }
   };
 
   return (
-    <>
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Add Game Details</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="name" placeholder="Game Name" value={game.name} onChange={handleInputChange} className="w-full p-2 border rounded" required />
-        <input type="date" name="date" value={game.date} onChange={handleInputChange} className="w-full p-2 border rounded" required />
-        <textarea name="details" placeholder="Game Details" value={game.details} onChange={handleInputChange} className="w-full p-2 border rounded" required />
-        
-        <div>
-          <input type="text" value={tag} onChange={(e) => setTag(e.target.value)} placeholder="Add Tag" className="p-2 border rounded" />
-          <button type="button" onClick={handleTagAdd} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded">Add Tag</button>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {game.tags.map((t, index) => (
-              <span key={index} className="px-2 py-1 bg-gray-200 rounded">{t}</span>
-            ))}
+    <div
+      className=" overflow-auto  h-screen flex items-center justify-center relative min-h-screen bg-black bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/free-photo/cool-geometric-triangular-figure-neon-laser-light-great-backgrounds-wallpapers_181624-9331.jpg?t=st=1739607488~exp=1739611088~hmac=8610fc04c5600772acdf7f46674e1c002330f62bfe8d98d6b49172c420126f33&w=1380')",
+      }}
+    >
+      <div className="overflow-auto absolute inset-0  bg-opacity-50"></div>
+
+      <div className="relative z-10 max-w-lg mx-auto p-6 bg-gray-900 bg-opacity-50 shadow-lg rounded-lg mt-10 text-white">
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          🎮 Add Game Details
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Game Name"
+            value={game.name}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+            required
+          />
+
+          <input
+            type="date"
+            name="date"
+            value={game.date}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+            required
+          />
+
+          <textarea
+            name="details"
+            placeholder="Game Details"
+            value={game.details}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+            required
+          />
+
+          {/* Tags */}
+          <div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+                placeholder="Add Tag"
+                className="flex-grow p-2 border border-gray-700 rounded bg-gray-800 text-white"
+              />
+              <button
+                type="button"
+                onClick={handleTagAdd}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {game.tags.map((t, index) => (
+                <span key={index} className="px-2 py-1 bg-blue-700 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Image URL input instead of file upload */}
-        <div>
-          <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="Enter Image URL" className="p-2 border rounded w-full" />
-          <button type="button" onClick={handleImageUrlAdd} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded">Add Image</button>
-        </div>
-
-        {/* Display added image URLs */}
-        <div className="mt-2 flex flex-wrap gap-2">
-          {game.images.map((t, index) => (
-            <span key={index} className="px-2 py-1 bg-gray-200 rounded" >{t}</span>
-          ))}
-        </div>
-
-        <textarea type="text" name="minSpecs" placeholder="Minimum Specs" value={game.minSpecs} onChange={handleInputChange} className="w-full p-2 border rounded" />
-        <textarea type="text" name="recSpecs" placeholder="Recommended Specs" value={game.recSpecs} onChange={handleInputChange} className="w-full p-2 border rounded" />
-
-        <div>
-          <input type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Add Purchase Link" className="p-2 border rounded" />
-          <button type="button" onClick={handleLinkAdd} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded">Add Link</button>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {game.purchaseLinks.map((l, index) => (
-              <span key={index} className="px-2 py-1 bg-gray-200 rounded">{l}</span>
-            ))}
+          {/* Image URL Input */}
+          <div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="Enter Image URL"
+                className="flex-grow p-2 border border-gray-700 rounded bg-gray-800 text-white"
+              />
+              <button
+                type="button"
+                onClick={handleImageUrlAdd}
+                className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {game.images.map((t, index) => (
+                <span key={index} className="px-2 py-1 bg-green-700 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <input type="text" name="price" placeholder="Price" value={game.price} onChange={handleInputChange} className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Add Game</button>
-      </form>
+          <textarea
+            type="text"
+            name="minSpecs"
+            placeholder="Minimum Specs"
+            value={game.minSpecs}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+          />
+
+          <textarea
+            type="text"
+            name="recSpecs"
+            placeholder="Recommended Specs"
+            value={game.recSpecs}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+          />
+
+          {/* Purchase Links */}
+          <div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                placeholder="Add Purchase Link"
+                className="flex-grow p-2 border border-gray-700 rounded bg-gray-800 text-white"
+              />
+              <button
+                type="button"
+                onClick={handleLinkAdd}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {game.purchaseLinks.map((l, index) => (
+                <span key={index} className="px-2 py-1 bg-yellow-700 rounded">
+                  {l}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <input
+            type="text"
+            name="price"
+            placeholder="Price"
+            value={game.price}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded"
+          >
+            ➕ Add Game
+          </button>
+        </form>
+      </div>
+      <ToastContainer />
     </div>
-    <ToastContainer />
-    </>
   );
 }
