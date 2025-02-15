@@ -13,11 +13,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: "https://mithun-aksh-nithika.netlify.app/", // Allow only this frontend
-  methods: "GET, POST, PUT, DELETE,OPTIONS",
-  allowedHeaders: "Content-Type, Authorization"
-}));
+app.use(cors());
 const url = process.env.MONGO_URL;
 mongoose.connect(url);
 
