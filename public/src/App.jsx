@@ -6,6 +6,7 @@ import LoginU from "./loginuser.jsx";
 import LoginA from "./loginadmin.jsx";
 import HomeU from "./userhome.jsx";
 import HomeA from "./adminhome.jsx";
+import Addgame from "./addthegame.jsx";
 import Gamepage from "./Gamepage.jsx";
 
 function App() {
