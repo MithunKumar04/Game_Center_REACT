@@ -51,7 +51,6 @@ export default function Addgame() {
       setImageUrl("");
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
