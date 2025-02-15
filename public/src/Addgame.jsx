@@ -53,7 +53,7 @@ export default function Addgame() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/addgame", {
+      const response = await fetch("https://game-center-react.onrender.com/addgame", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

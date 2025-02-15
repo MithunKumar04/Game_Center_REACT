@@ -32,7 +32,7 @@ function LoginA() {
     if (validateForm(email, password)) {
       console.log(`${email}${password}`);
       axios
-        .post("http://localhost:3000/loginadmin", { email, password })
+        .post("https://game-center-react.onrender.com/loginadmin", { email, password })
         .then((result) => {
           console.log(result.data);
           if (result.data === "Incorrect password") {

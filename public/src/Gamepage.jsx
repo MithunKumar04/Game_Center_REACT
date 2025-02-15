@@ -12,7 +12,7 @@ function Gamepage() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/games/${name}`)
+            .get(`https://game-center-react.onrender.com/games/${name}`)
             .then((response) => {
                 console.log("Game Data:", response.data); // ✅ Check if releaseDate exists
                 setData(response.data);

@@ -27,7 +27,7 @@ function RegisterA() {
     if(validateForm(name,email,password)){
     console.log(`${name}${email}${password}`);
     axios
-      .post("http://localhost:3000/registeradmin", { name, email, password })
+      .post("https://game-center-react.onrender.com/registeradmin", { name, email, password })
       .then((result) => {
         if(result.data==="User Aleady Exist")
         {

@@ -36,7 +36,7 @@ function RegisterU() {
     if (validateForm(name, email, password)) {
       console.log(`${name}${email}${password}`);
       axios
-        .post("http://localhost:3000/", { name, email, password })
+        .post("https://game-center-react.onrender.com/", { name, email, password })
         .then((result) => {
           if (result.data === "User Aleady Exist") {
             toast.error("User already Exist.", toastOptions);
