@@ -70,7 +70,7 @@ export default function HomeA() {
       {/* Navbar */}
       <nav className="bg-gray-800 p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="/game_center.png" alt="Logo" className="h-20 w-30 " />
+          <img src="/game_center.png" alt="Logo" className="h-20 w-30" />
         </div>
 
         {/* Tags Dropdown */}
@@ -144,7 +144,7 @@ export default function HomeA() {
                 <div
                   key={game._id}
                   className="p-2 hover:bg-gray-600 cursor-pointer rounded-md"
-                  onClick={() => navigate(`/game/${game._id}`)}
+                  onClick={() => navigate(`/game/${game.name}`)}
                 >
                   {game.name}
                 </div>
@@ -155,7 +155,7 @@ export default function HomeA() {
 
         {/* Logout Button */}
         <button
-          onClick={() => navigate("/loginuser")}
+          onClick={() => navigate("/loginadmin")}
           className="px-4 py-2 bg-red-600 rounded-lg"
         >
           Logout
@@ -163,7 +163,8 @@ export default function HomeA() {
       </nav>
 
       {/* Main Content - Game Cards */}
-      <div className="p-8">
+      <div className="d-flex h-screen w-screen  " style={{ backgroundImage: "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')" }}>
+      <div className="p-8 overflow-auto">
         <h2 className="text-2xl font-bold mb-4">
           {selectedTag ? `Games with Tag: ${selectedTag}` : "Available Games"}
         </h2>
@@ -174,7 +175,7 @@ export default function HomeA() {
             <div
               key={game._id}
               className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition"
-              onClick={() => navigate(`/game/${game._id}`)}
+              onClick={() => navigate(`/game/${game.name}`)}
             >
               {/* Game Image */}
               <img
@@ -189,6 +190,7 @@ export default function HomeA() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }

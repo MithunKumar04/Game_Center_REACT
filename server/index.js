@@ -78,7 +78,16 @@ app.post("/addgame", async (req, res) => {
 
 app.get("/games", async (req, res) => {
   const game = await Game.find(); // Hypothetical function
-  console.log("what");
+  if (game) {
+    res.json(game);
+  } else {
+    res.status(404).send("game not found");
+  }
+});
+
+app.get("/games/:name", async (req, res) => {
+  const name=req.params.name;
+  const game = await Game.findOne({name: name}); // Hypothetical function
   if (game) {
     res.json(game);
   } else {
