@@ -74,7 +74,7 @@ export default function HomeA() {
       {/* Navbar */}
       <nav className="bg-gray-800 p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="/game_center.png" alt="Logo" className="h-20 w-30" />
+        <img src="/src/assets/game_center.png" alt="image" className="h-20 w-30" />
         </div>
 
         {/* Tags Dropdown */}
@@ -171,7 +171,7 @@ export default function HomeA() {
         className="d-flex h-screen w-screen  "
         style={{
           backgroundImage:
-            "url('https://wallpapers.com/images/hd/best-gaming-background-d36rt32b2426dgqr.jpg')",
+            "url('https://wallpaperbat.com/img/11552946-black-and-red-gaming-wallpaper-on.jpg')",
         }}
       >
         <div className="p-8 overflow-auto">

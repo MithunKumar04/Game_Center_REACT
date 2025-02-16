@@ -80,7 +80,7 @@ export default function Addgame() {
       className=" overflow-auto  h-screen flex items-center justify-center relative min-h-screen bg-black bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://img.freepik.com/free-photo/cool-geometric-triangular-figure-neon-laser-light-great-backgrounds-wallpapers_181624-9331.jpg?t=st=1739607488~exp=1739611088~hmac=8610fc04c5600772acdf7f46674e1c002330f62bfe8d98d6b49172c420126f33&w=1380')",
+          "url('https://img.freepik.com/free-vector/neon-light-arrow-direction-perspective_1017-22033.jpg?t=st=1739707808~exp=1739711408~hmac=53cf132011f6a00d81d42a92db44b347a3fb5e65784a8332edaa5b4255077630&w=1380')",
       }}
     >
       <div className="overflow-auto absolute inset-0  bg-opacity-50"></div>

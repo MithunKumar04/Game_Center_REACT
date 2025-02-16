@@ -60,7 +60,7 @@ function LoginA() {
         }}
       >
         <div className="bg-white p-3 rounded  ">
-          <img src="/game_center.png" alt="image" height={200} width={350} />
+          <img src="src/assets/game_center.png" alt="image" height={200} width={350} />
           <h2>Admin Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
