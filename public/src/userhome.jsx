@@ -74,7 +74,7 @@ export default function HomeA() {
       {/* Navbar */}
       <nav className="bg-gray-800 p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-        <img src="/src/assets/game_center.png" alt="image" className="h-20 w-30" />
+        <img src="https://dypdvfcjkqkg2.cloudfront.net/large/1485049-182.png" alt="image" className="h-20 w-30" />
         </div>
 
         {/* Tags Dropdown */}
